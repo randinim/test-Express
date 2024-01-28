@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
   res.json({
     status: "success",
     message: "Welcome to MERN",
+    data: "Randini",
   });
 });
 //fetching all books
