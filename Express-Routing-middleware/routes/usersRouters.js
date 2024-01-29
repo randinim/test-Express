@@ -1,31 +1,31 @@
 const express = require("express");
 
-//create instance of express router
+//Create instnce of express router
 const userRouter = express.Router();
-//getting all users
-userRouter.get("/users", (req, res) => {
+//!.Getting all users
+userRouter.get("/", (req, res) => {
   res.json({
-    message: "All users fetched",
+    message: "All users  fetched",
   });
 });
-//getting a user
+//!.Getting a user
 userRouter.get("/:id", (req, res) => {
   res.json({
     message: "user  fetched",
   });
 });
-//update a user
+
+//! Update user
 userRouter.put("/:id", (req, res) => {
   res.json({
     message: "user  updated",
   });
 });
 
-//delete a user
+//! Delete
 userRouter.delete("/:id", (req, res) => {
   res.json({
     message: "user  deleted",
   });
 });
-
 module.exports = userRouter;

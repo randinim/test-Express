@@ -1,7 +1,7 @@
 //Momic Auth
 
-const isAuthenticated = (req, res, nest) => {
-  const isLogin = true;
+const isAuthenticated = (req, res, next) => {
+  const isLogin = fales;
   if (isLogin) {
     next();
   } else {
