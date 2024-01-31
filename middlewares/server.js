@@ -10,11 +10,15 @@ app.use(express.json());
 
 //APP_LEVEL_MIDDLEWARE-----
 //logging details of every request
-app.use((req, res, next) => {
-  console.log(req.body);
-  console.log("Am an app level middleware");
-});
-
+const logRequest = (req, res, next) => {
+  console.log(
+    `Request received at:${new Date().toISOString()} for ${req.method} to ${
+      req.path
+    }`
+  );
+  next();
+};
+app.use(logRequest);
 //Home
 app.post("/", (req, res) => {
   console.log(req.body);
