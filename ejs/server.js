@@ -2,37 +2,48 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const PORT = 8082;
-//serve the  static file
+//Serve the static files/folder
 app.use(express.static(path.join(__dirname, "public")));
-//Set the view engine as ejs
-app.set("veiw engine", "ejs");
+//Set the view engine as  ejs
+app.set("view engine", "ejs");
 
-//HOME ROUTE
+//Render Home page/route
 app.get("/", (req, res) => {
-  res.render("home.ejs");
+  res.render("home");
+});
+//Render About page/route
+app.get("/about", (req, res) => {
+  res.render("about");
+});
+//Render Contact page/route
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+//Render Gallery page/route
+app.get("/gallery", (req, res) => {
+  res.render("gallery");
+});
+//Render userdata page/route
+app.get("/user", (req, res) => {
+  //dummy user content
+  const userData = {
+    username: "Agnes",
+    age: 28,
+    isPremiumUser: false,
+    email: "agnes@gmail.com",
+    isLogin: true,
+  };
+  res.render("userData", userData);
 });
 
-//Render About ROUTE
-app.get("/about", (req, res) => {
-  res.render("about.ejs");
+//Render Products page/route
+app.get("/products", (req, res) => {
+  const products = [
+    { name: "Laptop", price: 999 },
+    { name: "Phone", price: 799 },
+    { name: "TV", price: 1200 },
+  ];
+  res.render("products", { products });
 });
-//Contact ROUTE
-app.get("/contact", (req, res) => {
-  res.render("contact.ejs");
-});
-//Gallery ROUTE
-app.get("/gallery", (req, res) => {
-  res.render("gallery.ejs");
-});
-//userdata ROUTE
-app.get("/userData", (req, res) => {
-  const userData = {};
-  res.render("userData.ejs", {
-    username: "Randini",
-    age: 23,
-    isPremiumUser: true,
-    email: "randi@gmail.com",
-  });
-});
-//Start the server
-app.listen(PORT, console.log(`server is running on port ${PORT}`));
+//!Start the server
+app.listen(PORT, console.log(`Server is running on port ${PORT}`));

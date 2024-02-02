@@ -10,5 +10,13 @@
     <h1><%=username%></h1>
     <p>Email:<%=email%></p>
     <p>Age:<%=age%></p>
+
+    <%if(isPremiumUser){%>
+    <p>You are premium Member</p>
+    <%}else{%>
+    <p>You are not a premium Member</p>
+    <%}%>
+
+    <p><%=(isLogin)?"Welcome" :"please Login"%></p>
   </body>
 </html>
